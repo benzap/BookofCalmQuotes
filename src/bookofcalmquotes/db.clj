@@ -5,7 +5,9 @@
 
 (def conn (env :database-url))
 
-(defn table-exists? [name]
+(defn table-exists?
+  "Checks if the provided database table exists"
+  [name]
   (let [q
         (jdbc/query conn
                     ["SELECT *
@@ -33,10 +35,6 @@
   (let [q "SELECT 1 FROM quotes WHERE quote = ?"]
     (-> (jdbc/query conn [q text]) first empty? not)))
 
-#_(insert-quote "This is another test quote??")
-#_(has-quote? "This is another test quote?")
-#_(init-quotes)
-
 (defn -get-quote []
   (let [q "SELECT qid, quote
            FROM quotes
@@ -50,11 +48,7 @@
            WHERE qid = ?"]
     (jdbc/execute! conn [q id])))
 
-#_(-get-quote)
-
 (defn get-quote []
   (let [{:keys [qid quote]} (-get-quote)]
     (-update-quote-time qid)
     quote))
-
-#_(get-quote)

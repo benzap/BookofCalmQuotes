@@ -1,36 +1,21 @@
-# bookofcalmquotes
+# Book of Calm Quotes
 
-FIXME: description
+  This is a twitter bot that tweets a revised list from The Book of
+  Calm onto twitter @TheBookofCalmQuote
 
-## Installation
-
-Download from http://example.com/FIXME.
+  Follow at https://twitter.com/BookofCalmQuote
 
 ## Usage
 
-FIXME: explanation
+   Requires Environment Variables
+### postgresql
+   - DATABASE_URL
+### twitter
+   - CONSUMER_KEY
+   - CONSUMER_SECRET
+   - ACCESS_TOKEN
+   - ACCESS_SECRET
+   
+After the postgresql and twitter app consumer keys and access tokens have been sorted out:
 
-    $ java -jar bookofcalmquotes-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+    $ lein run

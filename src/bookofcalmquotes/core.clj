@@ -1,6 +1,5 @@
 (ns bookofcalmquotes.core
-  (:require [environ.core :refer [env]]
-            [bookofcalmquotes.db :as db]
+  (:require [bookofcalmquotes.db :as db]
             [bookofcalmquotes.twitter :as twitter]
             [bookofcalmquotes.quotes :as quotes]
             [taoensso.timbre :as timbre :refer :all]
@@ -14,9 +13,11 @@
 
 ;; Scheduler
 (def pool (at-at/mk-pool))
-(def time-interval (* 1000 60))
+(def time-interval (* 1000 60 60 24)) ;; Every day
 
-(defn tweet-calming-quote []
+(defn tweet-calming-quote
+  "Gets a quote, and tweets it"
+  []
   (let [quote (db/get-quote)]
     (info "Sending a calming quote...")
     (twitter/tweet quote)))
